@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đăng ký HDV - BHM SIM Du lịch MobiFone</title>
+<title>Đăng ký BHM SIM Du lịch - HDV Hiệp hội Du lịch TP.HCM</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 
@@ -65,6 +65,10 @@
   input:focus{ outline:none; border-color:var(--mobi-blue); background:#fff; box-shadow:0 0 0 4px rgba(0,70,190,.1);}
   .hint{ font-size:12px; color:var(--muted); margin-top:5px; }
 
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .group-title{ font-size:14px; font-weight:700; color:var(--mobi-blue); margin:6px 0 14px; padding-bottom:8px; border-bottom:1.5px solid var(--line); }
+  .row2 label{ font-size:12.5px; }
+
   .upload{
     border:1.8px dashed #b9c6dd; border-radius:14px; padding:18px;
     text-align:center; cursor:pointer; transition:.15s; background:#fafcff;
@@ -110,17 +114,17 @@
 <div class="card">
   <div class="hero">
     <div class="brand"><span class="dot"></span> MOBIFONE</div>
-    <h1>Đăng ký Hướng dẫn viên<br>Chương trình BHM SIM Du lịch</h1>
-    <p>Vui lòng điền chính xác thông tin để được kích hoạt tham gia chương trình.</p>
+    <h1>Đăng ký bộ hoà mạng SIM<br>kèm gói cước du lịch</h1>
+    <p>Dành riêng cho Hướng dẫn viên Hiệp hội Du lịch TP.HCM</p>
   </div>
 
   <form id="form">
     <div class="msg" id="msg"></div>
 
     <div class="field">
-      <label>Mã HDV <span class="req">*</span></label>
-      <input type="text" id="maHDV" required placeholder="VD: HDV-001234">
-      <div class="hint">Mã thẻ hướng dẫn viên do cơ quan cấp</div>
+      <label>Mã Hội viên <span class="req">*</span></label>
+      <input type="text" id="maHDV" required placeholder="VD: HV-001234">
+      <div class="hint">Mã hội viên Hiệp hội Du lịch TP.HCM</div>
     </div>
 
     <div class="field">
@@ -134,7 +138,81 @@
     </div>
 
     <div class="field">
-      <label>Ảnh thẻ HDV <span class="req">*</span></label>
+      <label>Email <span class="req">*</span></label>
+      <input type="text" id="email" required placeholder="email@example.com" inputmode="email">
+      <div class="hint">Dùng để gửi thông tin chương trình</div>
+    </div>
+
+    <div class="group-title">Số lượng bộ hoà mạng đăng ký</div>
+
+    <div class="row2">
+      <div class="field">
+        <label>SL BHM HVN75 eSIM <span class="req">*</span></label>
+        <input type="text" id="hvn75_esim" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+      <div class="field">
+        <label>SL BHM HVN75 SIM vật lý <span class="req">*</span></label>
+        <input type="text" id="hvn75_vatly" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label>SL BHM HVN115 eSIM <span class="req">*</span></label>
+        <input type="text" id="hvn115_esim" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+      <div class="field">
+        <label>SL BHM HVN115 SIM vật lý <span class="req">*</span></label>
+        <input type="text" id="hvn115_vatly" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label>SL BHM HVN170 eSIM <span class="req">*</span></label>
+        <input type="text" id="hvn170_esim" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+      <div class="field">
+        <label>SL BHM HVN170 SIM vật lý <span class="req">*</span></label>
+        <input type="text" id="hvn170_vatly" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label>SL BHM HVN80 eSIM <span class="req">*</span></label>
+        <input type="text" id="hvn80_esim" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+      <div class="field">
+        <label>SL BHM HVN80 SIM vật lý <span class="req">*</span></label>
+        <input type="text" id="hvn80_vatly" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label>SL BHM HVN110 eSIM <span class="req">*</span></label>
+        <input type="text" id="hvn110_esim" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+      <div class="field">
+        <label>SL BHM HVN110 SIM vật lý <span class="req">*</span></label>
+        <input type="text" id="hvn110_vatly" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label>SL BHM HVN180 eSIM <span class="req">*</span></label>
+        <input type="text" id="hvn180_esim" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+      <div class="field">
+        <label>SL BHM HVN180 SIM vật lý <span class="req">*</span></label>
+        <input type="text" id="hvn180_vatly" required placeholder="0" inputmode="numeric" value="0">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Ảnh thẻ Hội viên <span class="req">*</span></label>
       <div class="upload" id="dropzone">
         <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
         <div class="t">Chạm để chụp / tải ảnh thẻ</div>
@@ -159,7 +237,7 @@
 
 <script>
   // ====== CẤU HÌNH: DÁN URL APPS SCRIPT CỦA ANH VÀO ĐÂY ======
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwScfyIouA2caMAdrA7LNVGXpQLMA6c_aDA5_RvR5Bedwag0OsJtQ-RypGe961XisNtzw/exec";
+  const SCRIPT_URL = "1MQTus66VS62AZUCZQ_YS2dvAkd6BZgD3W4SFS_mfdBw";
   // ===========================================================
 
   const fileInput = document.getElementById('anhThe');
@@ -195,9 +273,21 @@
     const maHDV=document.getElementById('maHDV').value.trim();
     const hoTen=document.getElementById('hoTen').value.trim();
     const sdt=document.getElementById('sdt').value.trim();
+    const email=document.getElementById('email').value.trim();
 
-    if(!base64Data){ showMsg('Vui lòng tải ảnh thẻ HDV.','err'); return; }
+    const goiIds=['hvn75','hvn115','hvn170','hvn80','hvn110','hvn180'];
+    const sl={};
+    for(const g of goiIds){
+      sl[g+'_esim']=document.getElementById(g+'_esim').value.trim();
+      sl[g+'_vatly']=document.getElementById(g+'_vatly').value.trim();
+    }
+
+    if(!base64Data){ showMsg('Vui lòng tải ảnh thẻ Hội viên.','err'); return; }
     if(!/^[0-9+\s.]{9,15}$/.test(sdt)){ showMsg('Số điện thoại không hợp lệ.','err'); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ showMsg('Vui lòng nhập email hợp lệ.','err'); return; }
+    for(const k in sl){
+      if(!/^\d+$/.test(sl[k])){ showMsg('Số lượng phải là số nguyên (điền 0 nếu không đăng ký).','err'); return; }
+    }
 
     const btn=document.getElementById('submitBtn');
     btn.disabled=true; btn.textContent='Đang gửi...';
@@ -208,7 +298,7 @@
         method:'POST',
         mode:'no-cors',
         headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body: JSON.stringify({ maHDV, hoTen, sdt, anh: base64Data })
+        body: JSON.stringify({ maHDV, hoTen, sdt, email, ...sl, anh: base64Data })
       });
       document.getElementById('form').style.display='none';
       document.getElementById('success').style.display='block';
