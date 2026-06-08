@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký HDV - BHM SIM Du lịch MobiFone</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  :root{
+    --mobi-blue:#0046be;
+    --mobi-blue-dark:#002f7a;
+    --mobi-red:#e2231a;
+    --ink:#0f1b2d;
+    --muted:#6b7891;
+    --line:#e3e8f0;
+    --bg:#eef3fb;
+    --ok:#0f9d58;
+  }
+
+  body{
+    font-family:'Be Vietnam Pro',sans-serif;
+    background:
+      radial-gradient(1200px 600px at 50% -200px, rgba(0,70,190,.18), transparent 60%),
+      linear-gradient(160deg,#eef3fb 0%,#e1eaf8 100%);
+    min-height:100vh;
+    color:var(--ink);
+    padding:24px 16px 60px;
+    display:flex; justify-content:center;
+  }
+
+  .card{
+    width:100%; max-width:480px;
+    background:#fff;
+    border-radius:22px;
+    box-shadow:0 20px 60px rgba(0,47,122,.16);
+    overflow:hidden;
+  }
+
+  .hero{
+    background:linear-gradient(135deg,var(--mobi-blue) 0%,var(--mobi-blue-dark) 100%);
+    color:#fff; padding:30px 26px 26px; position:relative;
+  }
+  .hero::after{
+    content:""; position:absolute; right:-40px; top:-40px;
+    width:160px; height:160px; border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.14),transparent 70%);
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px; font-size:15px; }
+  .brand .dot{ width:11px; height:11px; border-radius:50%; background:var(--mobi-red); box-shadow:0 0 0 4px rgba(226,35,26,.25);}
+  .hero h1{ font-size:23px; font-weight:800; margin-top:14px; line-height:1.25;}
+  .hero p{ font-size:13.5px; opacity:.9; margin-top:7px; }
+
+  form{ padding:24px 26px 6px; }
+  .field{ margin-bottom:18px; }
+  label{ display:block; font-size:13.5px; font-weight:600; margin-bottom:7px; }
+  label .req{ color:var(--mobi-red); }
+  input[type=text],input[type=tel]{
+    width:100%; padding:13px 14px; font-size:15px; font-family:inherit;
+    border:1.6px solid var(--line); border-radius:12px; background:#fafcff;
+    transition:.15s; color:var(--ink);
+  }
+  input:focus{ outline:none; border-color:var(--mobi-blue); background:#fff; box-shadow:0 0 0 4px rgba(0,70,190,.1);}
+  .hint{ font-size:12px; color:var(--muted); margin-top:5px; }
+
+  .upload{
+    border:1.8px dashed #b9c6dd; border-radius:14px; padding:18px;
+    text-align:center; cursor:pointer; transition:.15s; background:#fafcff;
+  }
+  .upload:hover{ border-color:var(--mobi-blue); background:#f4f8ff; }
+  .upload svg{ width:34px; height:34px; color:var(--mobi-blue); }
+  .upload .t{ font-size:14px; font-weight:600; margin-top:8px; }
+  .upload .s{ font-size:12px; color:var(--muted); margin-top:3px; }
+  #preview{ display:none; margin-top:12px; }
+  #preview img{ width:100%; max-height:220px; object-fit:contain; border-radius:12px; border:1px solid var(--line); }
+  .filename{ font-size:12.5px; color:var(--ok); font-weight:600; margin-top:8px; }
+
+  .btn{
+    width:100%; padding:15px; border:none; border-radius:13px; cursor:pointer;
+    background:linear-gradient(135deg,var(--mobi-blue),var(--mobi-blue-dark));
+    color:#fff; font-size:16px; font-weight:700; font-family:inherit;
+    margin:8px 0 22px; transition:.15s; box-shadow:0 10px 24px rgba(0,70,190,.3);
+  }
+  .btn:hover{ transform:translateY(-1px); box-shadow:0 14px 30px rgba(0,70,190,.4);}
+  .btn:disabled{ opacity:.6; cursor:not-allowed; transform:none; }
+
+  .msg{ padding:13px 15px; border-radius:11px; font-size:14px; font-weight:500; margin-bottom:18px; display:none; }
+  .msg.ok{ background:#e7f6ee; color:#0a7a42; border:1px solid #b8e6cc; }
+  .msg.err{ background:#fdecea; color:#b3160f; border:1px solid #f5c4c1; }
+
+  .success{ display:none; padding:40px 26px; text-align:center; }
+  .success .ring{
+    width:78px; height:78px; border-radius:50%; margin:0 auto 18px;
+    background:#e7f6ee; display:flex; align-items:center; justify-content:center;
+  }
+  .success .ring svg{ width:42px; height:42px; color:var(--ok); }
+  .success h2{ font-size:21px; font-weight:800; }
+  .success p{ color:var(--muted); margin-top:8px; font-size:14px; }
+  .success .again{
+    margin-top:24px; padding:12px 24px; border:1.6px solid var(--mobi-blue);
+    color:var(--mobi-blue); background:#fff; border-radius:11px; font-weight:600;
+    cursor:pointer; font-family:inherit; font-size:14px;
+  }
+  .foot{ text-align:center; font-size:11.5px; color:var(--muted); padding:0 26px 22px;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="hero">
+    <div class="brand"><span class="dot"></span> MOBIFONE</div>
+    <h1>Đăng ký Hướng dẫn viên<br>Chương trình BHM SIM Du lịch</h1>
+    <p>Vui lòng điền chính xác thông tin để được kích hoạt tham gia chương trình.</p>
+  </div>
+
+  <form id="form">
+    <div class="msg" id="msg"></div>
+
+    <div class="field">
+      <label>Mã HDV <span class="req">*</span></label>
+      <input type="text" id="maHDV" required placeholder="VD: HDV-001234">
+      <div class="hint">Mã thẻ hướng dẫn viên do cơ quan cấp</div>
+    </div>
+
+    <div class="field">
+      <label>Họ và tên <span class="req">*</span></label>
+      <input type="text" id="hoTen" required placeholder="Nguyễn Văn A">
+    </div>
+
+    <div class="field">
+      <label>Số điện thoại liên hệ <span class="req">*</span></label>
+      <input type="tel" id="sdt" required placeholder="09xx xxx xxx" inputmode="numeric">
+    </div>
+
+    <div class="field">
+      <label>Ảnh thẻ HDV <span class="req">*</span></label>
+      <div class="upload" id="dropzone">
+        <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/></svg>
+        <div class="t">Chạm để chụp / tải ảnh thẻ</div>
+        <div class="s">JPG, PNG — tối đa 5MB</div>
+      </div>
+      <input type="file" id="anhThe" accept="image/*" capture="environment" style="display:none">
+      <div id="preview"><img id="previewImg"><div class="filename" id="filename"></div></div>
+    </div>
+
+    <button type="submit" class="btn" id="submitBtn">Gửi đăng ký</button>
+  </form>
+
+  <div class="success" id="success">
+    <div class="ring"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div>
+    <h2>Đăng ký thành công!</h2>
+    <p>Cảm ơn anh/chị đã đăng ký. Bộ phận MobiFone sẽ liên hệ để kích hoạt tham gia chương trình.</p>
+    <button class="again" onclick="location.reload()">Đăng ký người khác</button>
+  </div>
+
+  <div class="foot">© MobiFone TP. Hồ Chí Minh — Phòng KDVT · Đội KHCL</div>
+</div>
+
+<script>
+  // ====== CẤU HÌNH: DÁN URL APPS SCRIPT CỦA ANH VÀO ĐÂY ======
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwScfyIouA2caMAdrA7LNVGXpQLMA6c_aDA5_RvR5Bedwag0OsJtQ-RypGe961XisNtzw/exec";
+  // ===========================================================
+
+  const fileInput = document.getElementById('anhThe');
+  const dropzone  = document.getElementById('dropzone');
+  const preview   = document.getElementById('preview');
+  const previewImg= document.getElementById('previewImg');
+  const filename  = document.getElementById('filename');
+  let base64Data = "";
+
+  dropzone.addEventListener('click', ()=> fileInput.click());
+  fileInput.addEventListener('change', e=>{
+    const f = e.target.files[0];
+    if(!f) return;
+    if(f.size > 5*1024*1024){ showMsg('Ảnh vượt quá 5MB, vui lòng chọn ảnh nhỏ hơn.','err'); return; }
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      base64Data = ev.target.result;
+      previewImg.src = base64Data;
+      filename.textContent = "✓ " + f.name;
+      preview.style.display = 'block';
+    };
+    reader.readAsDataURL(f);
+  });
+
+  function showMsg(t,type){
+    const m=document.getElementById('msg');
+    m.textContent=t; m.className='msg '+type; m.style.display='block';
+    m.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  document.getElementById('form').addEventListener('submit', async e=>{
+    e.preventDefault();
+    const maHDV=document.getElementById('maHDV').value.trim();
+    const hoTen=document.getElementById('hoTen').value.trim();
+    const sdt=document.getElementById('sdt').value.trim();
+
+    if(!base64Data){ showMsg('Vui lòng tải ảnh thẻ HDV.','err'); return; }
+    if(!/^[0-9+\s.]{9,15}$/.test(sdt)){ showMsg('Số điện thoại không hợp lệ.','err'); return; }
+
+    const btn=document.getElementById('submitBtn');
+    btn.disabled=true; btn.textContent='Đang gửi...';
+
+    try{
+      // text/plain để tránh CORS preflight với Apps Script
+      await fetch(SCRIPT_URL,{
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify({ maHDV, hoTen, sdt, anh: base64Data })
+      });
+      document.getElementById('form').style.display='none';
+      document.getElementById('success').style.display='block';
+      document.querySelector('.success').scrollIntoView({behavior:'smooth'});
+    }catch(err){
+      showMsg('Gửi thất bại, vui lòng kiểm tra kết nối mạng và thử lại.','err');
+      btn.disabled=false; btn.textContent='Gửi đăng ký';
+    }
+  });
+</script>
+</body>
+</html>
